@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Instruction</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family:"Poppins", serif;
+        }
+        :root{
+            --bg-color: #fdfdfd;
+            --text-color: rgba(36, 58, 116);
+            --main-color: #4e2bc2;
+            --white-color: #fdfdfd;
+            --shadow-color: rgba(0, 0, 0, .2);
+            --form-color: #E6F3FF;
+            --ftxt-color:#1A365D;
+            --rtxt-color: #000;
+        }
+        .header {
+            background: #fff;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .logo {
+            width: 60px;
+        }
+
+        .header-text {
+            text-align: center;
+            color: var(--text-color);
+            flex-grow: 1;
+        }
+
+        .header-text h1 {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+
+        .nav-menu {
+            background: var(--main-color);
+            padding: 15px 20px;
+        }
+        .nav-menu button  {
+            background: transparent;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            margin-right: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: 0.4s ease;
+            font-weight: 600;
+        }
+        .nav-menu button:hover{
+            color: rgb(219, 175, 81);
+            transition: 0.4s ease;
+        }
+        .whats-new {
+            background: #dc0000;
+            color: white;
+            padding: 8px 20px;
+            display: inline-block;
+            position: relative;
+            clip-path: polygon(0 0, 85% 0, 100% 50%, 85% 100%, 0 100%);
+        }
+
+        .main-content {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background: rgba(74, 43, 92, 0.1);
+            border-radius: 8px;
+        }
+
+        .instruction-item {
+            margin-bottom: 15px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .instruction-item:before {
+            content: "★";
+            position: absolute;
+            left: 0;
+            color: var(--main-color);
+        }
+        
+        .start-btn {
+            background-color: #2563eb;
+            color: white;
+            padding: 12px 40px;
+            border: none;
+            border-radius: 6px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .start-btn:hover:not(:disabled) {
+            background-color: #1d4ed8;
+            transform: translateY(-1px);
+        }
+
+        .start-btn:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+        .checkbox-container {
+            margin: 15px 0;
+            text-align: left;
+            padding: 0 20px;
+        }
+
+        .agree-checkbox {
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+        #registration-btn {
+            display: block;
+            width: 200px;
+            margin: 20px auto;
+            padding: 10px;
+            background: var(--main-color);
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            opacity: 1;
+        }
+
+        #registration-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            font-size: 14px;
+        }
+
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-text">
+            <h1>EXAMINATION RECRUITMENT BOARD</h1>
+        </div>
+    </header>
+
+    <nav class="nav-menu">
+        <button>GENERAL INSTRUCTIONS</button>
+        <button>REGISTRATION FORM</button>
+        <button>APPLICATION HISTORY</button>
+    </nav>
+
+    <div class="whats-new">What's New</div>
+
+    
+
+    <main class="main-content">
+        <div class="instruction-item">
+            Read all the information and instructions given in the Centralized Employment Notices (CENs) carefully before filling the registration form to prevent mistakes.
+        </div>
+        <div class="instruction-item">
+            Candidates are allowed to apply only one application for a particular CEN.
+        </div>
+        <div class="instruction-item">
+            Medium of Examination: Questions for CBT will be available in 13 regional Indian languages (viz., Assamese, Bengali, Gujarati, Kannada, Konkani, Malayalam, Manipuri, Marathi, Odia, Punjabi, Tamil, Telugu and Urdu) besides Hindi and English.
+        </div>
+        <div class="instruction-item">
+            Fill up all details sought in the online application form before submitting, please re-check and confirm that all the information furnished by you is correct in the Preview Form before final submission.
+        </div>
+        <div class="instruction-item">
+            Applications received without the prescribed fee shall not be considered and summarily rejected. No representation against such rejection will be entertained.
+        </div>
+        <div class="checkbox-container">
+            <input type="checkbox" id="accept-instructions" class="agree-checkbox">
+            <label for="accept-instructions">I have read and understood all the instructions</label>
+        </div>
+        <button class="start-btn" id="registration-btn" disabled>Registration</button>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const registrationBtn = document.getElementById('registration-btn');
+            const acceptCheckbox = document.getElementById('accept-instructions');
+
+            // Function to update button state
+            function updateButtonState() {
+                registrationBtn.disabled = !acceptCheckbox.checked;
+            }
+
+            // Add event listener to checkbox
+            acceptCheckbox.addEventListener('change', updateButtonState);
+
+            // Add event listener to registration button
+            registrationBtn.addEventListener('click', function() {
+                if (acceptCheckbox.checked) {
+                    if (confirm("Do you want to proceed with registration?")) {
+                        window.location.href = 'regis.html';
+                    }
+                } else {
+                    alert("Please accept the instructions before proceeding.");
+                }
+            });
+
+            // Initial button state
+            updateButtonState();
+        });
+    </script>
+</body>
+</html>

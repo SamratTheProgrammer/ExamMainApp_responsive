@@ -1,0 +1,2376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" type="x-icon" href="logo-removebg-preview1.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exam running</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+    		@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+*{
+    padding: 0;
+    margin: 0;
+    font-family: "Poppins", serif;
+    box-sizing: border-box;
+    text-decoration: none;
+    border:none;
+    outline:none;
+    scroll-behavior:smooth;
+}
+:root{
+    --primary-color: #fff;
+    --body-color: #e4e9f7;
+    --text-color: #333;
+    --text-color2: #707070;
+    --shadow-color: rgba(0, 0, 0, .2);
+    --main-color: #754ef9;
+    --white-color: #fdfdfd;
+}
+:root.dark{
+    --primary-color: #242526;
+    --body-color: #18131a;
+    --text-color: #fdfdfd;
+    --text-color2: #ccc;
+    --shadow-color: rgba(0, 0, 0, .7);
+}
+body{
+    height: 100vh;
+    background-color: var(--body-color);
+}
+.header{
+    background-color: var(--primary-color);
+    height: 6rem;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 2rem 7%;
+    display: flex;
+    box-shadow: 0 .1rem 1rem var(--shadow-color);
+}
+.navbar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.logo{
+    display: flex;
+    align-items: center;
+    font-size: 2rem;
+}
+.logo-img{
+    width: 6rem;
+    margin-right: 2rem;
+}
+.header-text{
+    color: var(--text-color);
+}
+.logout-main{
+    position: absolute;
+    left: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+  /* Base button styles */
+#theme-toggle {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 4rem;
+    height: 4rem;
+    padding-right: 4rem;
+    color: var(--text-color);
+}
+
+/* Icon base styles */
+#theme-toggle i {
+    font-size: 2rem;
+    position: absolute;
+    transition: opacity 0.3s ease;
+    transition: 0.3s ease;
+}
+#theme-toggle i:hover{
+    color: var(--text-color2);
+    transform: rotate(15deg);
+    transition: 0.3s ease;
+}
+/* Light mode (default) */
+#theme-toggle .bi-moon {
+    opacity: 1;
+}
+#theme-toggle .bi-brightness-high {
+    opacity: 0;
+}
+
+/* Dark mode */
+.dark #theme-toggle .bi-moon {
+    opacity: 0;
+    pointer-events: none;
+}
+.dark #theme-toggle .bi-brightness-high {
+    opacity: 1;
+}
+.logout-main a{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 4rem;
+    height: 4rem;
+    background: var(--main-color);
+    border-radius: 50%;
+    box-shadow: 0 .2rem .5rem var(--shadow-color);
+    font-size: 2rem;
+    color: var(--main-color);
+    margin : 2.5rem 1.5rem 3rem 0;
+    transition: .5s ease;
+    color: var(--white-color);
+}
+.logout-main a:hover{
+    background: transparent;
+    color: var(--text-color2);
+    border: .2rem solid var(--text-color2);
+}
+.exam-screen{
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: 2rem;
+    padding: 2rem;
+    height: calc(100% - 6rem);
+    width: 100%;
+    
+}
+.left-panel{
+    background-color: var(--primary-color);
+    border-radius: 10px;
+    height: 95vh;
+}
+.exam-header{
+    width: 98%;
+    height: 30%;
+    background-color: var(--body-color);
+    border-radius: 10px;
+    margin-top: 5rem;
+    margin-left: 0.8rem;
+}
+.question-container{
+    width: 98%;
+    height: 57%;
+    background-color: var(--body-color);
+    border-radius: 10px;
+    margin-top: 1.2%;
+    margin-left: 0.8rem;
+}
+.question-map{
+    width: 105%;
+    height: 95vh;
+    background-color: var(--primary-color);
+    border-radius: 10px;
+    margin-left: -0.8rem;
+}
+.student-info{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+.profile-pic{
+    height: 12rem;
+    width: 10rem;
+    background-color: var(--primary-color);
+    border-radius: 6px;
+    margin-left: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.pic{
+    height: 11rem;
+    width: 9rem;
+    border-radius: 6px;
+}
+.exam-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    margin-right: 6rem;
+    margin-top: 2rem;
+}
+.exam-info h2{
+    font-size: 2rem;
+    color: var(--text-color);
+    margin-top: -3rem;
+}
+.language-select {
+    padding: 0.5rem;
+    font-size: 1rem;
+    border-radius: 6px;
+    margin-top: 2rem;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    cursor: pointer;
+}
+.info{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--text-color);
+}
+.info h3 span{
+    color: #dc3545;
+}
+.info h4 span{
+    color: #2688f8;
+    font-weight: 700;
+}
+.info h4{
+    color: var(--text-color2);
+}
+.timer {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: var(--text-color);
+    margin-top: 2rem;
+}
+.exam-options{
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 20rem;
+    margin-bottom: 2rem;
+}
+.info-button {
+    position: relative;
+    display: inline-block;
+    width: 2rem;
+    height: 2rem;
+    background: #007bff;
+    color: white;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 2rem;
+    cursor: pointer;
+    margin-top: 2rem;
+    transition: 0.4s ease;
+}
+.info-button:hover{
+    transform: scale(1.02);
+    transition: 0.4s ease;
+}
+.info-button span{
+    font-size: 1.1rem;
+}
+.info-tooltip {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: var(--primary-color);
+    padding: 10px;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    width: 15rem;
+    z-index: 1000;
+    color: var(--text-color2);
+}
+.info-content {
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.info-content p {
+    margin: 5px 0;
+}
+
+.info-content strong {
+    color: var(--text-color);
+}
+.student-details {
+    flex-grow: 1;
+    font-size: 1.4rem;
+    padding-left: 2rem;
+    color: var(--text-color);
+    line-height: 3rem;
+}
+.question-map {
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+.map-grid {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 10px;
+    margin-top: 4rem;
+}
+.question-number {
+    width: 100%;
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--body-color);
+    border-radius: 4px;
+    cursor: pointer;
+    color: var(--text-color2);
+    font-size: 1.2rem;
+}
+
+.answered { background: #28a745; color: white; }
+.current { background: #007bff; color: white; }
+.legend {
+    margin-top: 20px;
+    padding: 10px;
+    background: var(--body-color);
+    border-radius: 4px;
+    color: var(--text-color);
+    
+}
+/* Style for visited but not answered questions */
+.question-number.visited {
+    background-color: rgb(133, 128, 128); /* Grey background for visited questions */
+    color: white;           /* Optional: adjust text color */
+}
+
+.question-number.marked {
+    background: #dc3545; color: white; 
+}
+
+.legend h4{
+    margin-left: 1rem;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+.legend-item {
+    display: flex;
+    align-items: center;
+    margin: 5px 0;
+    margin-left: 1rem;
+}
+.legend-color {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    border-radius: 2px;
+}
+.navigation-buttons {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    bottom: -5%;
+}
+.nav-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    min-width: 7rem;
+    font-size: 0.9rem;
+}
+.prev-btn { background: #096bff; color: white; font-weight: 500; margin-left: 3rem;transition: 0.4s ease;}
+.mark-btn { background: #e40f00; color: white; font-weight: 500;transition: 0.4s ease;}
+.next-btn { background: #20ad0e; color: white; font-weight: 500; margin-right: 3rem;transition: 0.4s ease;}
+.prev-btn:hover { background: #0249b4; color: white; transition: 0.4s ease;}
+.mark-btn:hover { background: #b30f04; color: white; transition: 0.4s ease;}
+.next-btn:hover { background: #147707; color: white; transition: 0.4s ease;}
+.question{
+    margin-left: 3rem;
+    color: var(--text-color);
+}
+.question-container h3{
+    font-size: 2rem;
+    padding-top: 2rem;
+    padding-bottom: 1.4rem;
+}
+.question .options{
+padding-top: 1rem;
+}
+.question .options .ans{
+margin-top: 1.2rem;
+font-size: 1.2rem;
+}
+.question-container p{
+    font-size: 1.4rem;
+}
+.qs-head{
+    display: flex;
+    justify-content: space-between;
+}
+.bx-refresh{
+    font-size: 2rem;
+    padding-top: 2rem;
+    margin-right: 3rem;
+    transition: 0.4s ease;
+}
+.bx-refresh:hover{
+    color: var(--text-color2);
+    transition: 0.4s ease;
+}
+/* .chatbox{
+    border-radius: 6px;
+    background-color: var(--body-color);
+    height: 18rem;
+    margin-top: 1rem;
+    margin-bottom: -1rem;
+}
+.chattype{
+    font-size: 1rem;
+    border-radius: 3rem;
+    width: 87%;
+    height: 60%;
+    padding-left: 2rem;
+    position: relative;
+    background-color: var(--primary-color);
+    color: var(--text-color2);
+}
+#chatsend{
+    position: absolute;
+    height: 60%;
+    width: 22%;
+    margin-left: -2.5rem;
+    border-radius: 3rem;
+    background-color: #096bff;
+    font-size: 1.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    color: white;
+    transition: 0.4s ease;
+    left: 82%;
+}
+#chatsend:hover{
+    background: #0249b4;
+    transition: 0.4s ease;
+}
+.chat-body{
+    display: flex;
+    width: 100%;
+    position: relative;
+    justify-content: center;
+    height: 5rem;
+    top: 60%;
+}
+.chathead{
+    display: inline-flex;
+    width: 100%;
+    font-size: 1.3rem;
+    height: 3rem;
+    justify-content: space-between;
+    padding: 0.7rem;
+    color: var(--text-color2);
+    box-shadow: 0 .1rem 1rem var(--shadow-color);
+    border-radius: 6px;
+}
+.chathead i{
+    font-size: 2rem;
+}
+.chathead i:hover{
+    color: var(--text-color);
+} */
+.chatbox {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 27rem;
+    background: var(--primary-color);
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    overflow: hidden;
+    right: 2.8rem;
+    box-shadow: 0 .1rem 1rem var(--shadow-color);
+    margin-bottom: 1rem;
+}
+
+.chathead {
+    background: var(--body-color);
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 .1rem 1rem var(--shadow-color);
+}
+
+.chathead i {
+    font-size: 20px;
+    cursor: pointer;
+    color: var(--text-color);
+}
+.chathead h5 {
+    margin: 0;
+    font-size: 16px;
+    color: #333;
+    color: var(--text-color);
+}
+
+.chat-body {
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 15px;
+}
+
+.message {
+    margin-bottom: 10px;
+    max-width: 80%;
+    padding: 8px 12px;
+    border-radius: 15px;
+    position: relative;
+}
+
+.bot-message {
+    background: var(--body-color);
+    margin-right: auto;
+    border-radius: 15px 15px 15px 0;
+    color: var(--text-color);
+}
+
+.user-message {
+    background: #0066FF;
+    color: white;
+    margin-left: auto;
+    border-radius: 15px 15px 0 15px;
+}
+
+.chat-input {
+    display: flex;
+    padding: 10px;
+    gap: 10px;
+    background: var(--body-color);
+    box-shadow: 0 .1rem 1rem var(--shadow-color);
+}
+
+.chattype {
+    flex: 1;
+    padding: 8px 15px;
+    border: 1px solid var(--text-color2);
+    border-radius: 20px;
+    outline: none;
+    font-size: 14px;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+}
+
+#chatsend {
+    background: #0066FF;
+    color: white;
+    border: none;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: 0.3s;
+}
+#chatsend:hover{
+    background: #0153cf;
+    transition: 0.3s;
+}
+#chatsend i {
+    font-size: 20px;
+}
+
+.chat-suggestions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    padding: 10px;
+}
+
+.suggestion-chip {
+    background: var(--body-color);
+    padding: 5px 12px;
+    border-radius: 15px;
+    font-size: 12px;
+    cursor: pointer;
+    border: none;
+    color: var(--text-color);
+    transition: 0.4s;
+}
+
+.suggestion-chip:hover {
+    background: var(--text-color2);
+    color: var(--body-color);
+    transition: 0.4s;
+}
+.submit-exam{
+    background: #c9a609; color: white; font-weight: 500;
+    margin-left: 9.5rem;
+    margin-top: 3rem;
+    transition: 0.4s ease;
+}
+.submit-exam:hover{
+    background: #8f7501; color: white; font-weight: 500;
+    transition: 0.4s ease;
+}
+.bg{
+    height: 100%;
+    width: 100%;
+    background-color: #ffffff8f;
+    position: absolute;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    margin: -2rem;
+}
+.submit-box{
+    justify-self: center;
+    align-self: center;
+    position: absolute;
+    display: none;
+    flex-direction: column;
+    height: 13rem;
+    width: 25rem;
+    background-color: var(--primary-color);
+    border-radius: 10px;
+    align-items: center;
+    transition: 0.5s ease;
+    box-shadow: 0 .1rem .5rem var(--shadow-color);
+}
+.submit-box.show {
+    display: flex; 
+    opacity: 1; 
+    transition: 0.5s ease;
+}
+.bg.modal-background{
+    display: flex;
+}
+.submit-box:hover{
+    transition: 0.5s ease;
+    transform: scale(1.02);
+    box-shadow: 0 .1rem 2rem var(--shadow-color);
+}
+.submit-box h4{
+    font-size: 1.3rem;
+    margin: 1rem;
+    padding-left: 1rem;
+    color: var(--text-color);
+}
+.confirm{
+    background: #20ad0e; color: white; font-weight: 500; margin-right: 3rem;transition: 0.4s ease;
+}
+.confirm:hover{
+    background: #147707; color: white; transition: 0.4s ease;
+}
+.close{
+    background: #e40f00; color: white; font-weight: 500;transition: 0.4s ease;
+}
+.close:hover{
+    background: #b30f04; color: white; transition: 0.4s ease;
+}
+.submit-warn-btn{
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-left: 2.5rem;
+    margin-top: 2.5rem;
+}
+.submit-warn-btn i{
+    padding-right:1rem ;
+}
+/* Logout Box */
+.bg-logout{
+    height: 100%;
+    width: 100%;
+    background-color: #ffffff8f;
+    position: absolute;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    margin: -2rem;
+}
+.logout-box{
+    justify-self: center;
+    align-self: center;
+    position: absolute;
+    display: none;
+    flex-direction: column;
+    height: 10rem;
+    width: 20rem;
+    background-color: var(--primary-color);
+    border-radius: 10px;
+    align-items: center;
+    transition: 0.5s ease;
+    box-shadow: 0 .1rem .5rem var(--shadow-color);
+}
+.logout-box.show {
+    display: flex; 
+    opacity: 1; 
+    transition: 0.5s ease;
+}
+.bg-logout.logout-background{
+    display: flex;
+}
+.logout-box:hover{
+    transition: 0.5s ease;
+    transform: scale(1.02);
+    box-shadow: 0 .1rem 2rem var(--shadow-color);
+}
+.logout-box h4{
+    font-size: 1.3rem;
+    margin: 1rem;
+    color: var(--text-color);
+}
+.logout{
+    background: #20ad0e; color: white; font-weight: 500; margin-right: 3rem;transition: 0.4s ease;
+}
+.logout:hover{
+    background: #147707; color: white; transition: 0.4s ease;
+}
+.cancle{
+    background: #e40f00; color: white; font-weight: 500;transition: 0.4s ease;
+}
+.cancle:hover{
+    background: #b30f04; color: white; transition: 0.4s ease;
+}
+.logout-warn-btn{
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-left: 3rem;
+    margin-top: 2rem;
+}
+.logout-warn-btn i{
+    padding-right:1rem ;
+    font-size: 1rem;
+}
+.nav-btn-logout {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 8rem;
+    font-size: 0.9rem;
+    position: relative;
+}
+
+@media(max-width:1600px){
+    .exam-info h2{
+        font-size: 1.5rem;
+    }
+    .submit-exam{
+        margin-left: 6.5rem;
+    }
+    .chatbox{
+        width: 22rem;
+        margin-bottom: -0.1rem;
+    }
+    .student-details{
+        line-height: 2.3rem;
+        font-size: 1.25rem;
+    }
+    .legend{
+        margin-top: 3rem;
+    }
+}
+    		
+    </style>
+</head>
+<body>
+    <script>
+        // Prevent back button
+        history.pushState(null, null, location.href);
+        window.onpopstate = function () {
+            history.go(1);
+        };
+        </script>
+        <section class="exam-screen">
+    <header class="header">
+            <nav class="navbar">
+                <div class="logo">
+            <img src="logo.png" alt="" class="logo-img">
+            <h4 class="header-text">Online Examination System</h4>
+        </div>
+            <div class="logout-main">
+                <button id="theme-toggle">
+                    <i class="bi bi-moon"></i>
+                    <i class="bi bi-brightness-high"></i>
+                </button>
+                <a href="#" id="logout-pop_up"><i class='bx bx-log-out'></i></a>
+            </div>
+        </nav>
+    </header>
+    <div class="bg-logout">
+        <div class="logout-box">
+            <h4>Are you want to logout?</h4>
+            <div class="logout-warn-btn">
+                <button class="nav-btn-logout cancle" id="cancle"><i class="bi bi-x-circle"></i>Cancle</button>
+                <button class="nav-btn-logout logout" id="logout"><i class='bx bx-log-out'></i>Logout</button>
+            </div>
+        </div>
+    </div>
+        <div class="left-panel">
+            <div class="exam-header">
+                <div class="student-info">
+                    <div class="profile-pic">
+                        <img src="Raw Pic.jpg" alt="Student Profile" class="pic">
+                    </div>
+                    <div class="student-details">
+                        <h4 class="name">Name: <span>Samrat Saha</span></h4>
+                        <p class="roll">Roll: <span>30901222131</span></p>
+                        <p class="roll">Reg no: <span>123456789</span></p>
+                        <p class="email">Email: <span>samratsahaonline@gmail.com</span></p>
+                    </div>
+                    <div class="exam-info">
+                        <h2>Mathematics Final Exam</h2>
+                        <div class="exam-options">
+                        <select class="language-select">
+                            <option value="en">English</option>
+                            <option value="bn">Bengali</option>
+                            <option value="hi">Hindi</option>
+                        </select>
+                        <div class="timer">30:00</div>
+                        <div class="info-button" onmouseover="showInfo()" onmouseout="hideInfo()"><span>i</span>
+                            <div class="info-tooltip" style="display: none;" >
+                            </div>
+                        </div>
+                        </div>
+                        <!-- <div class="info">
+                        <h3>Each Questions <span>2 Marks</span></h3>
+                        <h4><span>No negative marking</span> in this exam</h4>
+                    </div> -->
+                    </div>
+                </div>
+            </div>
+            <div class="question-container">
+                <div class="question">
+                    <div class="qs-head">
+                <h3 id="question-number">Question 1:</h3> 
+                <i class='bx bx-refresh'></i>
+            </div>
+                <p id="question-text"></p>
+                <div class="options" id="options-container">
+                    <div class="ans"><input type="radio" name="q1" value="a"></div>
+                    <div class="ans"><input type="radio" name="q1" value="b"></div>
+                    <div class="ans"><input type="radio" name="q1" value="c"></div>
+                    <div class="ans"><input type="radio" name="q1" value="d"></div>
+                </div>
+            </div>
+                <div class="navigation-buttons">
+                    <button class="nav-btn prev-btn">Previous</button>
+                    <button class="nav-btn mark-btn">Mark for Review</button>
+                    <button class="nav-btn next-btn">Next</button>
+                </div>
+            </div>
+        </div>
+        <div class="question-map">
+            <div class="map-grid">
+                <!-- Generate 25 question boxes -->
+                <script>
+                    for(let i = 1; i <= 32; i++) {
+                        document.write(`<div class="question-number">${i}</div>`);
+                    }
+                </script>
+            </div>
+            <div class="legend">
+                <h4>Legend</h4>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #28a745;"></div>
+                    <span>Answered</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #dc3545;"></div>
+                    <span>Marked for Review</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #007bff;"></div>
+                    <span>Current Question</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #6c757d;"></div>
+                    <span>Not Attempted</span>
+                </div>
+            </div>
+        <div class="chatbox">
+            <div class="chathead">
+                <i class='bx bx-left-arrow-alt' onclick="toggleChat()"></i>
+                <h5>Exam Assistance</h5>
+            </div>
+            <div class="chat-body">
+                <div class="chat-messages" id="chatMessages">
+                    <!-- Messages will appear here -->
+                </div>
+                <div class="chat-suggestions">
+                    <button class="suggestion-chip" onclick="askQuestion('time remaining')">Time Left</button>
+                    <button class="suggestion-chip" onclick="askQuestion('marking scheme')">Marks</button>
+                    <button class="suggestion-chip" onclick="askQuestion('language')">Language</button>
+                </div>
+                <div class="chat-input">
+                    <input type="text" placeholder="Ask your questions!" class="chattype" id="chating">
+                    <button type="submit" id="chatsend" onclick="sendMessage()">
+                        <i class='bx bx-up-arrow-alt'></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+            <button type="submit" class="submit-exam nav-btn"  id="pop_up">Submit Exam</button>
+        </div>
+        <div class="bg">
+        <div class="submit-box">
+            <h4>Are you want to submit your answer script?</h4>
+            <div class="submit-warn-btn">
+                <button class="nav-btn close" id="close"><i class="bi bi-x-circle"></i>Close</button>
+                <button class="nav-btn confirm" id="confirm"><i class="bi bi-check-circle"></i>Confirm</button>
+            </div>
+        </div>
+    </div>
+    </section>
+    <script >
+    const storedTheme = localStorage.getItem('theme');
+    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    function updateTheme(isDark) {
+        if (isDark) {
+            document.documentElement.classList.add('dark');
+            localStorage.setItem('theme', 'dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+            localStorage.setItem('theme', 'light');
+        }
+    }
+
+    // Initial theme setup
+    if (storedTheme) {
+        updateTheme(storedTheme === 'dark');
+    } else {
+        updateTheme(systemPrefersDark);
+    }
+
+    // Listen for system theme changes
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+        if (!localStorage.getItem('theme')) {
+            updateTheme(e.matches);
+        }
+    });
+
+    // Toggle theme function
+    function toggleTheme() {
+        const isDark = document.documentElement.classList.contains('dark');
+        updateTheme(!isDark);
+    }
+
+    // Theme toggle button implementation
+    const toggleButton = document.getElementById('theme-toggle');
+    if (toggleButton) {
+        toggleButton.addEventListener('click', toggleTheme);
+    }
+// Info button tooltip
+function showInfo() {
+    document.querySelector('.info-tooltip').style.display = 'block';
+}
+
+function hideInfo() {
+    document.querySelector('.info-tooltip').style.display = 'none';
+}
+// Timer functionality
+let timeLeft = 30 * 60; // 30 minutes in seconds
+const timerDisplay = document.querySelector('.timer');
+
+function formatTime(timeInSeconds) {
+    const minutes = Math.floor(timeInSeconds / 60);
+    const seconds = timeInSeconds % 60;
+    return `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+}
+
+function updateTimer() {
+    timerDisplay.textContent = formatTime(timeLeft);
+    
+    if (timeLeft > 0) {
+        timeLeft--;
+    } else {
+        clearInterval(timerInterval);
+        alert('Time is up!');
+        window.location.href = 'post-loading.html';
+    }
+}
+
+        const timerInterval = setInterval(updateTimer, 1000);
+        // Select the refresh icon
+        const refreshIcon = document.querySelector('.bx-refresh');
+        
+        // Function to clear the selected options
+        function refreshQuestion() {
+            // Select all radio inputs within the question container and uncheck them
+            document.querySelectorAll('.question-container .options input[type="radio"]').forEach(radio => {
+                radio.checked = false;
+            });
+        }
+        
+        // Add click event listener to the refresh icon
+        refreshIcon.addEventListener('click', refreshQuestion);
+
+
+        const questions = [
+            {
+                text: "What is the value of π (pi) to two decimal places?",
+                options: ["3.14", "3.12", "3.16", "3.18"],
+                correctAnswer: 0 // Index of the correct answer in options array
+            },
+            {
+                text: "What is the square root of 16?",
+                options: ["2", "3", "4", "5"],
+                correctAnswer: 2
+            },
+            {
+                text: "What is 5 + 3?",
+                options: ["5", "6", "8", "10"],
+                correctAnswer: 2
+            },
+            {
+                text: "What is the square root of 16?",
+                options: ["2", "3", "4", "5"],
+                correctAnswer: 2
+              },
+              {
+                text: "What is 7 × 8?",
+                options: ["54", "56", "58", "60"],
+                correctAnswer: 1
+              },
+              {
+                text: "What is 125 ÷ 5?",
+                options: ["20", "25", "30", "35"],
+                correctAnswer: 1
+              },
+              {
+                text: "What is 15% of 200?",
+                options: ["20", "25", "30", "35"],
+                correctAnswer: 2
+              },
+              {
+                text: "What is the cube of 3?",
+                options: ["6", "9", "18", "27"],
+                correctAnswer: 3
+              },
+              {
+                text: "What is -8 + 3?",
+                options: ["-11", "-5", "-3", "-1"],
+                correctAnswer: 1
+              },
+              {
+                text: "What is 2³?",
+                options: ["6", "8", "10", "12"],
+                correctAnswer: 1
+              },
+              {
+                text: "What is the perimeter of a square with side length 5?",
+                options: ["15", "20", "25", "30"],
+                correctAnswer: 1
+              },
+              {
+                text: "What is 3/4 as a decimal?",
+                options: ["0.65", "0.70", "0.75", "0.80"],
+                correctAnswer: 2
+              },
+              {
+                text: "What is the area of a rectangle with length 6 and width 4?",
+                options: ["10", "14", "24", "30"],
+                correctAnswer: 2
+              },
+              {
+                text: "What is 42 - 17?",
+                options: ["15", "20", "25", "35"],
+                correctAnswer: 2
+              },
+              {
+                text: "What is the next number in the sequence: 2, 4, 8, 16, ...?",
+                options: ["24", "28", "30", "32"],
+                correctAnswer: 3
+              },
+              {
+                text: "What is 1/2 + 1/4?",
+                options: ["2/6", "3/4", "4/6", "5/8"],
+                correctAnswer: 1
+              },
+              {
+                text: "What is the value of x in: x + 5 = 12?",
+                options: ["5", "7", "8", "9"],
+                correctAnswer: 1
+              },
+              {
+                text: "What is 20% of 150?",
+                options: ["25", "30", "35", "30"],
+                correctAnswer: 1
+              },
+              {
+                text: "What is the area of a triangle with base 8 and height 6?",
+                options: ["21", "24", "27", "30"],
+                correctAnswer: 1
+              },
+              {
+                "text": "What is 9 × 7?",
+                "options": ["56", "63", "72", "81"],
+                "correctAnswer": 1
+              },
+              {
+                "text": "What is 144 ÷ 12?",
+                "options": ["10", "12", "14", "16"],
+                "correctAnswer": 1
+              },
+              {
+                "text": "What is the square of 9?",
+                "options": ["72", "81", "90", "99"],
+                "correctAnswer": 1
+              },
+              {
+                "text": "What is 5⁴?",
+                "options": ["525", "600", "625", "650"],
+                "correctAnswer": 2
+              },
+              {
+                "text": "What is the sum of angles in a triangle?",
+                "options": ["90°", "120°", "180°", "360°"],
+                "correctAnswer": 2
+              },
+              {
+                "text": "What is 25% of 80?",
+                "options": ["15", "20", "25", "30"],
+                "correctAnswer": 1
+              },
+              {
+                "text": "What is the value of π rounded to 2 decimal places?",
+                "options": ["3.12", "3.14", "3.16", "3.18"],
+                "correctAnswer": 1
+              },
+              {
+                "text": "What is 2/5 as a decimal?",
+                "options": ["0.2", "0.3", "0.4", "0.5"],
+                "correctAnswer": 2
+              },
+              {
+                "text": "What is the next prime number after 17?",
+                "options": ["18", "19", "20", "21"],
+                "correctAnswer": 1
+              },
+              {
+                "text": "What is 6! (6 factorial)?",
+                "options": ["120", "360", "720", "5040"],
+                "correctAnswer": 2
+              },
+              {
+                "text": "What is the square root of 81?",
+                "options": ["7", "8", "9", "10"],
+                "correctAnswer": 2
+              },
+              {
+                "text": "What is 3.5 × 2?",
+                "options": ["6.0", "6.5", "7.0", "7.5"],
+                "correctAnswer": 2
+              },
+              {
+                "text": "What is the area of a circle with radius 5? (Use π = 3.14)",
+                "options": ["31.4", "47.1", "78.5", "125.6"],
+                "correctAnswer": 2
+              }
+        ];
+        
+        // Track the current question index
+        let currentQuestionIndex = 0;
+        
+        // Track answer status
+        const questionNumbers = document.querySelectorAll('.question-number');
+        
+        // Initialize first question as current
+        questionNumbers[0].classList.add('current');
+        
+        // Function to render the question based on the current index
+        function renderQuestion(index) {
+            const question = questions[index];
+            const questionNumberElem = document.getElementById("question-number");
+            const questionTextElem = document.getElementById("question-text");
+            const optionsContainer = document.getElementById("options-container");
+        
+            // Update question number and text
+            questionNumberElem.textContent = `Question ${index + 1}:`;
+            questionTextElem.textContent = question.text;
+        
+            // Clear previous options
+            optionsContainer.innerHTML = "";
+        
+            // Render new options with event listener for answer selection
+            question.options.forEach((option, i) => {
+                const optionElem = document.createElement("div");
+                optionElem.className = "ans";
+                optionElem.innerHTML = `<input type="radio" name="question${index}" value="${i}"> ${option}`;
+                
+                const radioInput = optionElem.querySelector('input[type="radio"]');
+                radioInput.addEventListener('change', () => {
+                    questionNumbers[currentQuestionIndex].classList.add('answered');
+                    questionNumbers[currentQuestionIndex].classList.remove('visited');
+                });
+        
+                optionsContainer.appendChild(optionElem);
+            });
+        }
+        
+        // Update current question status and navigate to specific question
+        function updateCurrentQuestion(index) {
+            if (!questionNumbers[currentQuestionIndex].classList.contains('answered')) {
+                questionNumbers[currentQuestionIndex].classList.add('visited');
+            }
+            questionNumbers[currentQuestionIndex].classList.remove('current');
+            questionNumbers[index].classList.add('current');
+            questionNumbers[index].classList.remove('visited');
+            currentQuestionIndex = index;
+            renderQuestion(currentQuestionIndex);
+        }
+        
+        // Initialize question navigation on click
+        questionNumbers.forEach((number, index) => {
+            number.addEventListener('click', () => {
+                updateCurrentQuestion(index);
+            });
+        });
+        
+        // Initial render of the first question
+        renderQuestion(currentQuestionIndex);
+        
+        // Navigation buttons for next and previous
+        document.querySelector(".prev-btn").addEventListener("click", () => {
+            if (currentQuestionIndex > 0) {
+                updateCurrentQuestion(currentQuestionIndex - 1);
+            }
+        });
+        
+        document.querySelector(".next-btn").addEventListener("click", () => {
+            if (currentQuestionIndex < questions.length - 1) {
+                updateCurrentQuestion(currentQuestionIndex + 1);
+            }
+        });
+        
+        document.querySelector(".mark-btn").addEventListener("click", () => {
+            questionNumbers[currentQuestionIndex].classList.toggle('marked');
+        });
+
+        function translateContent(language) {
+            const questionText = document.getElementById("question-text");
+            const options = document.querySelectorAll(".ans");
+                      // Assuming you have a translation function using Googletrans
+            const translatedQuestion = translateText(questionText.textContent, language);
+            const translatedOptions = options.map(option => translateText(option.textContent, language));
+            questionText.textContent = translatedQuestion;
+            options.forEach((option, index) => {
+            option.textContent = translatedOptions[index];
+            });
+        }
+        
+          // Event listener for language change
+        document.querySelector(".language-select").addEventListener("change", (event) => {
+            const selectedLanguage = event.target.value;
+            translateContent(selectedLanguage);
+        });
+
+        // Submit Warning PopUp
+        const bg = document.querySelector('.bg');
+        const modal = document.querySelector('.submit-box');
+        const submitBtn = document.getElementById('pop_up');
+        const closeBtn = document.querySelector('.close');
+
+        submitBtn.onclick = function() {
+            modal.classList.add('show');
+            bg.classList.add('modal-background');
+        }
+        closeBtn.onclick = function() {
+            modal.classList.remove('show');
+            bg.classList.remove('modal-background');
+        }
+        document.getElementById('confirm').addEventListener('click', () => {
+            alert('Your paper submission was successful!');
+            window.location.href = 'postloading.html';
+        });
+        // Logout Warning PopUp
+const logout = document.querySelector('.bg-logout');
+const container = document.querySelector('.logout-box');
+const logoutBtn = document.getElementById('logout-pop_up');
+const cancleBtn = document.querySelector('.cancle');
+
+logoutBtn.onclick = function() {
+    container.classList.add('show');
+    logout.classList.add('logout-background');
+}
+cancleBtn.onclick = function() {
+    container.classList.remove('show');
+    logout.classList.remove('logout-background');
+}
+document.getElementById('logout').addEventListener('click', () => {
+    alert('Your logout was successful!');
+    window.location.href = 'logout-loading.html';
+});
+        // Language change
+        // function updateQuestionLanguage() {
+        //     const languageSelect = document.querySelector('.language-select');
+        //     const questionContainers = document.querySelectorAll('.question-container');
+        
+        //     questionContainers.forEach((container, index) => {
+        //     const questionText = container.querySelector('#question-text');
+        //     const optionElements = container.querySelectorAll('.options .ans input[type="radio"] + label');
+        //       // Translate the question text
+        //     translateText(questions[index].text, languageSelect.value)
+        //         .then(translatedText => {
+        //         questionText.textContent = translatedText;
+        //         });
+        //       // Translate the options
+        //     questions[index].options.forEach((option, optionIndex) => {
+        //         translateText(option, languageSelect.value)
+        //         .then(translatedOption => {
+        //             optionElements[optionIndex].textContent = translatedOption;
+        //         });
+        //     });
+        //     });
+        // }
+        
+        // function translateText(text, target) {
+        //     return fetch(`https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=${target}&dt=t&q=${encodeURIComponent(text)}`)
+        //     .then(response => response.json())
+        //     .then(data => data[0][0][0]);
+        // }
+        
+        // const languageSelect = document.querySelector('.language-select');
+        // languageSelect.addEventListener('change', updateQuestionLanguage);
+
+
+         // Assuming questionstranslate array has this structure:
+const questionstranslate = [
+    {
+        text: "What is the value of π (pi) to two decimal places?",
+        options: ["3.14", "3.12", "3.16", "3.18"],
+        correctAnswer: 0 // Index of the correct answer in options array
+    },
+    {
+        text: "What is the square root of 16?",
+        options: ["2", "3", "4", "5"],
+        correctAnswer: 2
+    },
+    {
+        text: "What is 5 + 3?",
+        options: ["5", "6", "8", "10"],
+        correctAnswer: 2
+    },
+    {
+        text: "What is the square root of 16?",
+        options: ["2", "3", "4", "5"],
+        correctAnswer: 2
+      },
+      {
+        text: "What is 7 × 8?",
+        options: ["54", "56", "58", "60"],
+        correctAnswer: 1
+      },
+      {
+        text: "What is 125 ÷ 5?",
+        options: ["20", "25", "30", "35"],
+        correctAnswer: 1
+      },
+      {
+        text: "What is 15% of 200?",
+        options: ["20", "25", "30", "35"],
+        correctAnswer: 2
+      },
+      {
+        text: "What is the cube of 3?",
+        options: ["6", "9", "18", "27"],
+        correctAnswer: 3
+      },
+      {
+        text: "What is -8 + 3?",
+        options: ["-11", "-5", "-3", "-1"],
+        correctAnswer: 1
+      },
+      {
+        text: "What is 2³?",
+        options: ["6", "8", "10", "12"],
+        correctAnswer: 1
+      },
+      {
+        text: "What is the perimeter of a square with side length 5?",
+        options: ["15", "20", "25", "30"],
+        correctAnswer: 1
+      },
+      {
+        text: "What is 3/4 as a decimal?",
+        options: ["0.65", "0.70", "0.75", "0.80"],
+        correctAnswer: 2
+      },
+      {
+        text: "What is the area of a rectangle with length 6 and width 4?",
+        options: ["10", "14", "24", "30"],
+        correctAnswer: 2
+      },
+      {
+        text: "What is 42 - 17?",
+        options: ["15", "20", "25", "35"],
+        correctAnswer: 2
+      },
+      {
+        text: "What is the next number in the sequence: 2, 4, 8, 16, ...?",
+        options: ["24", "28", "30", "32"],
+        correctAnswer: 3
+      },
+      {
+        text: "What is 1/2 + 1/4?",
+        options: ["2/6", "3/4", "4/6", "5/8"],
+        correctAnswer: 1
+      },
+      {
+        text: "What is the value of x in: x + 5 = 12?",
+        options: ["5", "7", "8", "9"],
+        correctAnswer: 1
+      },
+      {
+        text: "What is 20% of 150?",
+        options: ["25", "30", "35", "30"],
+        correctAnswer: 1
+      },
+      {
+        text: "What is the area of a triangle with base 8 and height 6?",
+        options: ["21", "24", "27", "30"],
+        correctAnswer: 1
+      },
+      {
+        "text": "What is 9 × 7?",
+        "options": ["56", "63", "72", "81"],
+        "correctAnswer": 1
+      },
+      {
+        "text": "What is 144 ÷ 12?",
+        "options": ["10", "12", "14", "16"],
+        "correctAnswer": 1
+      },
+      {
+        "text": "What is the square of 9?",
+        "options": ["72", "81", "90", "99"],
+        "correctAnswer": 1
+      },
+      {
+        "text": "What is 5⁴?",
+        "options": ["525", "600", "625", "650"],
+        "correctAnswer": 2
+      },
+      {
+        "text": "What is the sum of angles in a triangle?",
+        "options": ["90°", "120°", "180°", "360°"],
+        "correctAnswer": 2
+      },
+      {
+        "text": "What is 25% of 80?",
+        "options": ["15", "20", "25", "30"],
+        "correctAnswer": 1
+      },
+      {
+        "text": "What is the value of π rounded to 2 decimal places?",
+        "options": ["3.12", "3.14", "3.16", "3.18"],
+        "correctAnswer": 1
+      },
+      {
+        "text": "What is 2/5 as a decimal?",
+        "options": ["0.2", "0.3", "0.4", "0.5"],
+        "correctAnswer": 2
+      },
+      {
+        "text": "What is the next prime number after 17?",
+        "options": ["18", "19", "20", "21"],
+        "correctAnswer": 1
+      },
+      {
+        "text": "What is 6! (6 factorial)?",
+        "options": ["120", "360", "720", "5040"],
+        "correctAnswer": 2
+      },
+      {
+        "text": "What is the square root of 81?",
+        "options": ["7", "8", "9", "10"],
+        "correctAnswer": 2
+      },
+      {
+        "text": "What is 3.5 × 2?",
+        "options": ["6.0", "6.5", "7.0", "7.5"],
+        "correctAnswer": 2
+      },
+      {
+        "text": "What is the area of a circle with radius 5? (Use π = 3.14)",
+        "options": ["31.4", "47.1", "78.5", "125.6"],
+        "correctAnswer": 2
+      }
+    // ... more questionstranslate
+];
+
+async function translateText(text, target) {
+  try {
+    const response = await fetch(
+      `https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=${target}&dt=t&q=${encodeURIComponent(text)}`
+    );
+    const data = await response.json();
+    return data[0][0][0];
+  } catch (error) {
+    console.error('Error translating text:', error);
+    return text; // Return original text if translation fails
+  }
+}
+
+// Function to update the question and options
+async function updateQuestionLanguage() {
+  const languageSelect = document.querySelector('.language-select');
+  const questionContainers = document.querySelectorAll('.question-container');
+  const targetLanguage = languageSelect.value;
+
+  try {
+    // Process all questionstranslate in parallel
+    const translationPromises = Array.from(questionContainers).map(async (container, index) => {
+      const questionText = container.querySelector('#question-text');
+      const optionElements = container.querySelectorAll('.options .ans input[type="radio"] + label');
+
+      // Translate question text
+      const translatedQuestionText = await translateText(questionstranslate[index].text, targetLanguage);
+      questionText.textContent = translatedQuestionText;
+
+      // Translate all options for this question in parallel
+      const optionPromises = Array.from(optionElements).map(async (element, optionIndex) => {
+        const translatedOption = await translateText(questionstranslate[index].options[optionIndex], targetLanguage);
+        element.textContent = translatedOption;
+      });
+
+      await Promise.all(optionPromises);
+    });
+
+    // Wait for all questionstranslate to be translated
+    await Promise.all(translationPromises);
+  } catch (error) {
+    console.error('Translation error:', error);
+  }
+}
+
+// Add event listener
+const languageSelect = document.querySelector('.language-select');
+languageSelect.addEventListener('change', updateQuestionLanguage);
+
+// Optional: Initial translation when page loads
+document.addEventListener('DOMContentLoaded', updateQuestionLanguage);
+// Question tracking state
+const examState = {
+  totalQuestions: 25,
+  currentQuestion: 1,
+  questions: {},
+  stats: {
+      attempted: 0,
+      notAttempted: 25,
+      markedForReview: 0
+  }
+};
+
+// Initialize question states
+function initializeExam() {
+  for (let i = 1; i <= examState.totalQuestions; i++) {
+      examState.questions[i] = {
+          status: 'notAttempted',
+          selectedOption: null,
+          isMarkedForReview: false
+      };
+  }
+  updateQuestionMap();
+  updateStatistics();
+}
+// Handle answer selection
+function handleAnswerSelect(questionNumber, optionIndex) {
+  const question = examState.questions[questionNumber];
+  
+  // If this question wasn't previously attempted
+  if (question.status !== 'attempted') {
+      examState.stats.attempted++;
+      examState.stats.notAttempted--;
+  }
+  
+  // Update question state
+  question.status = 'attempted';
+  question.selectedOption = optionIndex;
+  
+  // If it was marked for review, unmark it
+  if (question.isMarkedForReview) {
+      question.isMarkedForReview = false;
+      examState.stats.markedForReview--;
+  }
+  
+  updateQuestionMap();
+  updateStatistics();
+}
+
+// Add these variables at the top of your script.js
+const examConfig = {
+  totalQuestions: questions.length,
+  maxAttempts: 3,
+  currentAttempt: 1,
+  timePerAttempt: 30 * 60, // 30 minutes in seconds
+};
+
+// Update the info tooltip HTML content dynamically
+function updateInfoTooltip() {
+  const attemptsRemaining = examConfig.maxAttempts - examConfig.currentAttempt + 1;
+  const answeredQuestions = document.querySelectorAll('.question-number.answered').length;
+  const markedQuestions = document.querySelectorAll('.question-number.marked').length;
+  
+  const tooltipContent = `
+      <div class="info-content">
+          <p><strong>Total Questions:</strong> ${examConfig.totalQuestions}</p>
+          <p><strong>Answered:</strong> ${answeredQuestions}</p>
+          <p><strong>Marked for Review:</strong> ${markedQuestions}</p>
+          <p><strong>Attempts Remaining:</strong> ${attemptsRemaining}</p>
+          <p><strong>Current Attempt:</strong> ${examConfig.currentAttempt} of ${examConfig.maxAttempts}</p>
+      </div>
+  `;
+  
+  document.querySelector('.info-tooltip').innerHTML = tooltipContent;
+}
+
+// Modify the existing showInfo function
+function showInfo() {
+  updateInfoTooltip(); // Update content before showing
+  document.querySelector('.info-tooltip').style.display = 'block';
+}
+
+// Update the timer display to include attempt information
+function updateTimer() {
+  const timerDisplay = document.querySelector('.timer');
+  timerDisplay.textContent = formatTime(timeLeft);
+  
+  if (timeLeft > 0) {
+      timeLeft--;
+  } else {
+      clearInterval(timerInterval);
+      if (examConfig.currentAttempt < examConfig.maxAttempts) {
+          examConfig.currentAttempt++;
+          timeLeft = examConfig.timePerAttempt;
+          resetExam();
+      } else {
+          alert('All attempts completed! Redirecting to start page.');
+          window.location.href = 'post-loading.html';
+      }
+  }
+}
+
+// Add function to reset exam state between attempts
+function resetExam() {
+  // Clear all answers
+  document.querySelectorAll('.question-container .options input[type="radio"]').forEach(radio => {
+      radio.checked = false;
+  });
+  
+  // Reset question status indicators
+  document.querySelectorAll('.question-number').forEach(num => {
+      num.classList.remove('answered', 'marked', 'visited');
+  });
+  
+  // Reset to first question
+  currentQuestionIndex = 0;
+  renderQuestion(currentQuestionIndex);
+  
+  // Update attempt information
+  alert(`Starting attempt ${examConfig.currentAttempt} of ${examConfig.maxAttempts}`);
+}
+
+// Update submit button handler
+document.getElementById('confirm').addEventListener('click', () => {
+  const attemptsRemaining = examConfig.maxAttempts - examConfig.currentAttempt;
+  if (attemptsRemaining > 0) {
+      examConfig.currentAttempt++;
+      timeLeft = examConfig.timePerAttempt;
+      resetExam();
+  } else {
+      alert('Final attempt completed! Redirecting to start page.');
+      window.location.href = 'post-loading.html';
+  }
+});
+
+// Add these event listeners to update info when questions are answered or marked
+document.addEventListener('change', (e) => {
+  if (e.target.type === 'radio') {
+      updateInfoTooltip();
+  }
+});
+
+document.querySelector('.mark-btn').addEventListener('click', () => {
+  updateInfoTooltip();
+});
+
+
+
+// ChatBot
+
+let isOpen = true;
+
+function toggleChat() {
+    const chatBody = document.querySelector('.chat-body');
+    isOpen = !isOpen;
+    chatBody.style.display = isOpen ? 'flex' : 'none';
+}
+
+// Initialize chat with welcome message
+window.onload = function() {
+    addMessage("Hi! I'm your exam assistant. How can I help you today?", 'bot');
+    addMessage("You can ask me about exam duration, marking scheme, or language options.", 'bot');
+}
+
+function addMessage(text, sender, isViolation = false) {
+  const messagesDiv = document.getElementById('chatMessages');
+  const messageDiv = document.createElement('div');
+  messageDiv.className = `message ${sender}-message${isViolation ? ' violation' : ''}`;
+  messageDiv.textContent = text;
+  messagesDiv.appendChild(messageDiv);
+  messagesDiv.scrollTop = messagesDiv.scrollHeight;
+}
+
+function sendMessage() {
+    const input = document.getElementById('chating');
+    const message = input.value.trim();
+    
+    if (message) {
+        addMessage(message, 'user');
+        generateResponse(message);
+        input.value = '';
+    }
+}
+
+// Handle Enter key
+document.getElementById('chating').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+        sendMessage();
+    }
+});
+
+function askQuestion(topic) {
+    addMessage(topic, 'user');
+    generateResponse(topic);
+}
+
+function generateResponse(query) {
+    setTimeout(() => {
+        const response = getResponseForQuery(query.toLowerCase());
+        addMessage(response, 'bot');
+    }, 500);
+}
+
+function getResponseForQuery(query) {
+  if (query.includes('time') || query.includes('duration')) {
+    return `Your remaining time is ${formatTime(timeLeft)} minutes. The timer is displayed at the top of your screen.`;
+  }
+    if (query.includes('mark') || query.includes('marks')) {
+        return 'Each question carries 2 marks. There is negative marking in this exam. Total marks of exam is 100.';
+    }
+    if (query.includes('language')) {
+        return 'You can switch between English, Bengali, and Hindi using the language dropdown at the top.';
+    }
+    if (query.includes('review')) {
+        return 'Use the "Mark for Review" button below the question. Reviewed questions appear in red in the question palette.';
+    }
+    if (query.includes('next') || query.includes('previous')) {
+        return 'Use the Next and Previous buttons below the question, or click question numbers in the palette on the right.';
+    }
+    if (query.includes('submit')) {
+        return 'Click the "Submit Exam" button at the bottom right when you\'re ready to submit. Make sure to review all questions first.';
+    }
+    return "I can help you with questions about time remaining, marking scheme, language options, or navigation. What would you like to know?";
+}
+
+
+
+// Violation tracking state
+const violationSystem = {
+  violations: [],
+  warningCount: 0,
+  maxWarnings: 100,
+  isFullscreen: false
+};
+
+// Initialize violation detection
+function initializeViolationDetection() {
+  // Detect tab visibility changes
+  document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+          handleViolation('Tab Change', 'Warning: Changing tabs is not allowed during the exam.');
+      }
+  });
+
+  // Detect browser back/forward buttons
+  window.addEventListener('popstate', (e) => {
+      e.preventDefault();
+      handleViolation('Navigation', 'Warning: Using browser navigation buttons is not allowed.');
+      window.history.pushState(null, null, window.location.href);
+  });
+
+  // Prevent right-click context menu
+  document.addEventListener('contextmenu', (e) => {
+      e.preventDefault();
+      handleViolation('Right Click', 'Warning: Right-clicking is disabled during the exam.');
+  });
+
+  // Detect copy/paste attempts
+  document.addEventListener('copy', (e) => {
+      e.preventDefault();
+      handleViolation('Copy Attempt', 'Warning: Copying exam content is not allowed.');
+  });
+  
+  document.addEventListener('paste', (e) => {
+      e.preventDefault();
+      handleViolation('Paste Attempt', 'Warning: Pasting content is not allowed during the exam.');
+  });
+
+  // Detect keyboard shortcuts
+  document.addEventListener('keydown', (e) => {
+      // Detect Ctrl/Cmd + key combinations
+      if (e.ctrlKey || e.metaKey) {
+          const blockedKeys = ['c', 'v', 'p', 'r', 'a'];
+          if (blockedKeys.includes(e.key.toLowerCase())) {
+              e.preventDefault();
+              handleViolation('Keyboard Shortcut', 'Warning: Keyboard shortcuts are disabled during the exam.');
+          }
+      }
+      
+      // Detect Alt+Tab attempt
+      if (e.altKey && e.key === 'Tab') {
+          e.preventDefault();
+          handleViolation('Alt+Tab', 'Warning: Switching applications is not allowed during the exam.');
+      }
+  });
+
+  // Track mouse leaving the window
+  document.addEventListener('mouseleave', () => {
+      handleViolation('Mouse Leave', 'Warning: Please keep your mouse within the exam window.');
+  });
+
+  // Detect fullscreen changes
+  document.addEventListener('fullscreenchange', () => {
+      if (!document.fullscreenElement) {
+          handleViolation('Fullscreen Exit', 'Warning: Exiting fullscreen mode is not allowed.');
+          requestFullscreen();
+      }
+  });
+
+  // Initialize fullscreen mode
+  requestFullscreen();
+
+  // Prevent browser refresh
+  window.addEventListener('beforeunload', (e) => {
+      e.preventDefault();
+      e.returnValue = '';
+      handleViolation('Refresh Attempt', 'Warning: Refreshing the page is not allowed during the exam.');
+  });
+
+  // Initialize history state to prevent back button
+  window.history.pushState(null, null, window.location.href);
+}
+
+// Handle violations
+function handleViolation(type, message) {
+  const violation = {
+      type: type,
+      timestamp: new Date().toLocaleTimeString(),
+      message: message
+  };
+  
+  violationSystem.violations.push(violation);
+  violationSystem.warningCount++;
+
+  // Add violation message to chat with red color
+  const messagesDiv = document.getElementById('chatMessages');
+  const violationDiv = document.createElement('div');
+  violationDiv.className = 'message bot-message violation';
+  violationDiv.style.color = 'red';
+  violationDiv.textContent = `${violation.timestamp}: ${violation.message}`;
+  messagesDiv.appendChild(violationDiv);
+  messagesDiv.scrollTop = messagesDiv.scrollHeight;
+
+  // Check if max warnings exceeded
+  if (violationSystem.warningCount >= violationSystem.maxWarnings) {
+      handleMaxViolations();
+  }
+}
+
+// Handle maximum violations reached
+function handleMaxViolations() {
+  alert('Maximum violations reached. Your exam will be submitted automatically.');
+  // Submit exam
+  window.location.href = 'postloading.html';
+}
+
+// Request fullscreen mode
+function requestFullscreen() {
+  const elem = document.documentElement;
+  if (elem.requestFullscreen) {
+      elem.requestFullscreen();
+  } else if (elem.webkitRequestFullscreen) {
+      elem.webkitRequestFullscreen();
+  } else if (elem.msRequestFullscreen) {
+      elem.msRequestFullscreen();
+  }
+  violationSystem.isFullscreen = true;
+}
+
+// Add CSS for violation messages
+const style = document.createElement('style');
+style.textContent = `
+  .violation {
+      background-color: #ffe6e6;
+      border-left: 4px solid #ff0000;
+      font-weight: bold;
+  }
+`;
+document.head.appendChild(style);
+
+// Ensure chatbot responses are not affected by violations
+function generateResponse(query) {
+    setTimeout(() => {
+        const response = getResponseForQuery(query.toLowerCase());
+        addMessage(response, 'bot');
+    }, 500);
+}
+
+// Initialize violation detection when the page loads
+document.addEventListener('DOMContentLoaded', initializeViolationDetection);
+
+// prevent-selection Drag.js
+
+const preventSelection = {
+  isEnabled: true,
+
+  // Initialize all prevention methods
+  init() {
+      this.preventTextSelection();
+      this.preventDragAndDrop();
+      this.preventImageDragging();
+      this.preventCopyPaste();
+      this.addNoSelectStyles();
+  },
+
+  // Prevent text selection
+  preventTextSelection() {
+      // Prevent mouse selection
+      document.addEventListener('selectstart', (e) => {
+          if (this.isEnabled) {
+              e.preventDefault();
+              this.handleViolation('Text Selection', 'Text selection is not allowed during the exam.');
+          }
+      });
+
+      // Prevent touch selection
+      document.addEventListener('touchstart', (e) => {
+          if (this.isEnabled && e.touches.length > 1) {
+              e.preventDefault();
+              this.handleViolation('Touch Selection', 'Multi-touch gestures are not allowed during the exam.');
+          }
+      });
+
+      // Prevent selection keyboard shortcuts
+      document.addEventListener('keydown', (e) => {
+          if (this.isEnabled) {
+              // Ctrl/Cmd + A (Select All)
+              if ((e.ctrlKey || e.metaKey) && e.key === 'a') {
+                  e.preventDefault();
+                  this.handleViolation('Keyboard Selection', 'Select all shortcut is not allowed during the exam.');
+              }
+          }
+      });
+  },
+
+  // Prevent drag and drop operations
+  preventDragAndDrop() {
+      const events = ['dragstart', 'drag', 'dragenter', 'dragover', 'dragleave', 'drop'];
+      
+      events.forEach(eventType => {
+          document.addEventListener(eventType, (e) => {
+              if (this.isEnabled) {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  if (eventType === 'dragstart') {
+                      this.handleViolation('Drag Attempt', 'Dragging content is not allowed during the exam.');
+                  }
+              }
+          }, { capture: true });
+      });
+  },
+
+  // Prevent image dragging specifically
+  preventImageDragging() {
+      document.querySelectorAll('img').forEach(img => {
+          img.setAttribute('draggable', 'false');
+          img.style.userSelect = 'none';
+          img.style.webkitUserSelect = 'none';
+      });
+
+      // Handle dynamically added images
+      const observer = new MutationObserver((mutations) => {
+          mutations.forEach((mutation) => {
+              mutation.addedNodes.forEach((node) => {
+                  if (node.nodeName === 'IMG') {
+                      node.setAttribute('draggable', 'false');
+                      node.style.userSelect = 'none';
+                      node.style.webkitUserSelect = 'none';
+                  }
+              });
+          });
+      });
+
+      observer.observe(document.body, {
+          childList: true,
+          subtree: true
+      });
+  },
+
+  // Prevent copy/paste operations
+  preventCopyPaste() {
+      const events = ['copy', 'paste', 'cut'];
+      
+      events.forEach(eventType => {
+          document.addEventListener(eventType, (e) => {
+              if (this.isEnabled) {
+                  e.preventDefault();
+                  this.handleViolation('Copy/Paste', `${eventType.charAt(0).toUpperCase() + eventType.slice(1)} operation is not allowed during the exam.`);
+              }
+          });
+      });
+  },
+
+  // Add CSS styles to prevent selection
+  addNoSelectStyles() {
+      const style = document.createElement('style');
+      style.textContent = `
+          body {
+              -webkit-user-select: none;
+              -moz-user-select: none;
+              -ms-user-select: none;
+              user-select: none;
+              -webkit-touch-callout: none;
+          }
+          
+          /* Allow selection only in permitted input areas */
+          input[type="text"],
+          input[type="number"],
+          textarea,
+          [contenteditable="true"] {
+              -webkit-user-select: text;
+              -moz-user-select: text;
+              -ms-user-select: text;
+              user-select: text;
+          }
+      `;
+      document.head.appendChild(style);
+  },
+
+  // Handle violations (integrate with your existing violation system)
+  handleViolation(type, message) {
+      // If you have an existing violation system, call it here
+      if (typeof window.handleViolation === 'function') {
+          window.handleViolation(type, message);
+      } else {
+          console.warn(`${type}: ${message}`);
+      }
+  },
+
+  // Enable prevention methods
+  enable() {
+      this.isEnabled = true;
+      this.addNoSelectStyles();
+  },
+
+  // Disable prevention methods (if needed for certain areas)
+  disable() {
+      this.isEnabled = false;
+  }
+};
+
+// Initialize when the DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+  preventSelection.init();
+});
+
+// Export for module usage if needed
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = preventSelection;
+}
+
+    </script>
+  <script>
+//Store the warning timeout ID and state
+  let warningTimeoutId = null;
+  let isFullscreen = false;
+  let examSubmitted = false;
+  let exitAttempts = 0;
+  const MAX_EXIT_ATTEMPTS = 10;
+  let preventKeyEvent = false;
+
+  // Create warning elements container
+  const warningContainer = document.createElement('div');
+  warningContainer.style.cssText = `
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      padding: 10px;
+      z-index: 10000;
+  `;
+  document.body.appendChild(warningContainer);
+
+  // Create fullscreen warning element
+  const fullscreenWarning = document.createElement('div');
+  fullscreenWarning.style.cssText = `
+      background-color: #ff4444;
+      color: white;
+      padding: 15px 30px;
+      border-radius: 5px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+      text-align: center;
+      pointer-events: none;
+      display: none;
+  `;
+  warningContainer.appendChild(fullscreenWarning);
+
+  // Create system keys warning element
+  const systemKeyWarning = document.createElement('div');
+  systemKeyWarning.style.cssText = `
+      background-color: #ff8c00;
+      color: white;
+      padding: 15px 30px;
+      border-radius: 5px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+      text-align: center;
+      pointer-events: none;
+      display: none;
+  `;
+  warningContainer.appendChild(systemKeyWarning);
+
+  // Create persistent exam mode indicator
+  const examModeIndicator = document.createElement('div');
+  examModeIndicator.style.cssText = `
+      // position: fixed;
+      // bottom: 20px;
+      // right: 20px;
+      // background-color: #333;
+      // color: white;
+      // padding: 10px 20px;
+      // border-radius: 5px;
+      // font-family: Arial, sans-serif;
+      // font-size: 14px;
+      // z-index: 10000;
+  `;
+  examModeIndicator.textContent = "";
+  document.body.appendChild(examModeIndicator);
+
+  // Function to show warning message
+  function showWarning(warningElement, message, duration = 3000) {
+      warningElement.textContent = message;
+      warningElement.style.display = 'block';
+      
+      setTimeout(() => {
+          warningElement.style.display = 'none';
+      }, duration);
+  }
+
+  // Function to handle system key warnings
+  function showSystemKeyWarning(message) {
+      showWarning(systemKeyWarning, message);
+  }
+
+  // Function to update fullscreen warning
+  function updateFullscreenWarning() {
+      const message = `⚠️ Fullscreen is mandatory! Please maintain fullscreen mode! Attempt ${exitAttempts} of ${MAX_EXIT_ATTEMPTS}`;
+      showWarning(fullscreenWarning, message, 5000);
+  }
+
+  // Function to force fullscreen
+  function forceFullscreen() {
+      const element = document.documentElement;
+      
+      try {
+          if (element.requestFullscreen) {
+              element.requestFullscreen();
+          } else if (element.webkitRequestFullscreen) {
+              element.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
+          } else if (element.mozRequestFullScreen) {
+              element.mozRequestFullScreen();
+          } else if (element.msRequestFullscreen) {
+              element.msRequestFullscreen();
+          }
+      } catch (error) {
+          console.error("Fullscreen request failed:", error);
+      }
+  }
+
+  // Function to handle key events for exam mode
+  function handleExamKeyEvents(event) {
+      if (examSubmitted) return;
+
+      // Define blocked keys and combinations
+      const blockedKeys = new Set(['Tab', 'Alt', 'Control', 'Meta', 'Escape', 
+          'F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8', 'F9', 'F10', 'F11', 'F12']);
+      
+      if (
+          blockedKeys.has(event.key) || // Block specific keys
+          event.altKey || // Block Alt combinations
+          (event.ctrlKey && !['c', 'v'].includes(event.key.toLowerCase())) || // Block Ctrl except copy/paste
+          event.metaKey || // Block Windows/Command key
+          (event.key === 'Tab' && (event.altKey || event.ctrlKey)) // Block Alt+Tab and Ctrl+Tab
+      ) {
+          event.preventDefault();
+          event.stopPropagation();
+
+          // Show appropriate warning message
+          let warningMessage = "⚠️ This key combination is not allowed during the exam";
+          if (event.altKey && event.key === 'Tab') {
+              warningMessage = "⚠️ Alt + Tab is not allowed during the exam";
+          } else if (event.ctrlKey && event.key === 'Tab') {
+              warningMessage = "⚠️ Ctrl + Tab is not allowed during the exam";
+          } else if (event.metaKey || event.key === 'Meta') {
+              warningMessage = "⚠️ Windows key is not allowed during the exam";
+          } else if (event.altKey) {
+              warningMessage = "⚠️ Alt key combinations are not allowed during the exam";
+          } else if (event.ctrlKey) {
+              warningMessage = "⚠️ Ctrl key combinations are not allowed during the exam";
+          }
+
+          showSystemKeyWarning(warningMessage);
+          return false;
+      }
+  }
+
+  // Function to handle exit attempts
+  function handleExitAttempt(event) {
+      if (!examSubmitted) {
+          if (event) {
+              event.preventDefault();
+              event.stopPropagation();
+          }
+          
+          if (exitAttempts < MAX_EXIT_ATTEMPTS) {
+              exitAttempts++;
+              updateFullscreenWarning();
+          } else {
+              showWarning(fullscreenWarning, "⚠️ Maximum attempts reached. Please contact proctor.", 0);
+          }
+
+          setTimeout(forceFullscreen, 100);
+          return false;
+      }
+  }
+
+  // Function to check fullscreen state
+  function checkFullscreenState() {
+      if (!examSubmitted && !document.fullscreenElement && 
+          !document.webkitFullscreenElement && 
+          !document.mozFullScreenElement && 
+          !document.msFullscreenElement) {
+          handleExitAttempt();
+      }
+  }
+
+  // Function to handle exam submission
+  function handleExamSubmit() {
+      const submitBtn = document.querySelector('.submit-warn-btn');
+      const confirmBtn = submitBtn?.querySelector(':last-child');
+      
+      if (confirmBtn) {
+          confirmBtn.addEventListener('click', () => {
+              examSubmitted = true;
+              preventKeyEvent = false;
+              
+              // Exit fullscreen
+              if (document.exitFullscreen) {
+                  document.exitFullscreen();
+              } else if (document.webkitExitFullscreen) {
+                  document.webkitExitFullscreen();
+              } else if (document.mozCancelFullScreen) {
+                  document.mozCancelFullScreen();
+              } else if (document.msExitFullscreen) {
+                  document.msExitFullscreen();
+              }
+              
+              // Clean up
+              document.removeEventListener('keydown', handleExamKeyEvents, true);
+              document.removeEventListener('fullscreenchange', checkFullscreenState);
+              document.removeEventListener('webkitfullscreenchange', checkFullscreenState);
+              document.removeEventListener('mozfullscreenchange', checkFullscreenState);
+              document.removeEventListener('MSFullscreenChange', checkFullscreenState);
+              
+              // Remove warnings and indicators
+              warningContainer.remove();
+              examModeIndicator.remove();
+          });
+      }
+  }
+
+  // Initialize exam mode
+  function initializeExamMode() {
+      preventKeyEvent = true;
+      
+      // Event listeners for fullscreen changes
+      document.addEventListener('fullscreenchange', checkFullscreenState);
+      document.addEventListener('webkitfullscreenchange', checkFullscreenState);
+      document.addEventListener('mozfullscreenchange', checkFullscreenState);
+      document.addEventListener('MSFullscreenChange', checkFullscreenState);
+      
+      // Event listener for key prevention
+      document.addEventListener('keydown', handleExamKeyEvents, true);
+      
+      // Initial fullscreen request on first click
+      document.addEventListener('click', function initialClick() {
+          if (!isFullscreen && !examSubmitted) {
+              forceFullscreen();
+              isFullscreen = true;
+              document.removeEventListener('click', initialClick);
+          }
+      }, { once: true });
+      
+      // Setup exam submission handler
+      handleExamSubmit();
+      
+      // Initial warnings
+      showSystemKeyWarning("⚠️ System keys are now disabled for the exam");
+      updateFullscreenWarning();
+  }
+
+  // Initialize when DOM is loaded
+  document.addEventListener('DOMContentLoaded', initializeExamMode);
+
+  // Continuous fullscreen check
+  const fullscreenCheckInterval = setInterval(() => {
+      if (!examSubmitted && !document.fullscreenElement && 
+          !document.webkitFullscreenElement && 
+          !document.mozFullScreenElement && 
+          !document.msFullscreenElement) {
+          forceFullscreen();
+      }
+  }, 500);
+
+
+  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+  </script>
+</body>
+</html>
