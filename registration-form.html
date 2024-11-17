@@ -58,6 +58,9 @@ label{
 .dob{
 color:white;
 }
+::placeholder{
+    padding-left: 0.3rem;
+}
 .container{
     position: relative;
     max-width: 700px;
@@ -407,7 +410,25 @@ p {
     height: 30px;
     fill: white;
 }
-
+.full{
+    /* height: 115%;
+    width: 285.9%; */
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    /* top: -10%;
+    left: -100%; */
+    top: 0;
+    left: 0;
+    background: hsla(0, 0%, 37%, 0.753);
+}
+.open-bg{
+    display: flex;
+}
 /* Responsive */
 @media screen and (max-width: 500px) {
     .form .column{
@@ -424,6 +445,49 @@ p {
     #theme-toggle i{
         margin-left: -4rem;
     }
+    .success-container{
+        left: 0;
+        visibility: visible;
+        height: 28rem;
+    }
+    .success-icon{
+        width: 4rem;
+        height: 4rem;
+    }
+    .success-container h1{
+        font-size: 1.5rem;
+    }
+    .success-container p{
+        font-size: 0.8rem;
+    }
+    .btn{
+        width: 9rem;
+        font-size: 0.8rem;
+    }
+    .full{
+        top: -2%;
+        left: -3.2%;
+        width: 106.4%;
+        height: 104%;
+    }
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: inherit !important;
+    transition: background-color 5000s ease-in-out 0s;
+    box-shadow: inset 0 0 20px 20px transparent;
+    color: #ffffff !important;
+}
+input:autofill{
+    filter: none;
+    color: #ffffff !important; 
+    background-color: #1f1f3a !important;
+}
+input:-ms-input-placeholder {
+    color: #ffffff !important;
 }
     </style>
 
@@ -516,11 +580,11 @@ p {
         
         <button onclick="openPopup()" class="btn3">Register</button> 
     </form>
+    <div class="full">
     <div id="popup" class="success-container">
         <div class="success-icon">
             <div class="checkmark"></div>
         </div>
-        <div class="full">
         <h1>Registration Successful!</h1>
         <p>Thank you for registering with us. We've sent a confirmation email to your inbox. Please verify your email to complete the registration process.</p>
         
@@ -532,7 +596,7 @@ p {
         
         <div class="buttons">
             <a href="#" class="btn btn-primary">Check Email</a>
-            <a href="/Index.html" class="btn btn-secondary">Return Home</a>
+            <a href="/index.html" class="btn btn-secondary">Return Home</a>
         </div>
     </div>
 </div>
@@ -578,13 +642,15 @@ p {
     }
   // PopUP
     let popup = document.getElementById("popup");
+    const bg = document.querySelector(".full");
     function openPopup(){
         popup.classList.add("open-popup");
+        bg.classList.add("open-bg");
     }
     function closePopup(){
         popup.classList.remove("open-popup");
+        bg.classList.remove("open-bg");
     }
-const rg = document.querySelector(".full");
 
    </script>
 </body>

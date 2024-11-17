@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        :root {
+            --background: #ffffff;
+            --text: #333333;
+            --card-bg: #f0f0f0;
+            --border: #dddddd;
+        }
+
+        .dark-mode {
+            --background: #1a1a1a;
+            --text: #ffffff;
+            --card-bg: #2d2d2d;
+            --border: #404040;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: var(--background);
+            color: var(--text);
+            transition: all 0.3s ease;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .profile-image-container {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        overflow: hidden;
+        margin-right: 16px;
+        }
+
+        .profile-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        }
+
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 24px;
+            padding: 10px;
+        }
+
+        .result-card {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .student-info {
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 15px;
+        }
+
+        .info-item {
+            margin: 10px 0;
+        }
+
+        .subjects {
+            display: grid;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .subject {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            background-color: var(--background);
+            border-radius: 5px;
+        }
+
+        .result-summary {
+            text-align: center;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        .pass {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .fail {
+            background-color: #f44336;
+            color: white;
+        }
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .btn-primary {
+            background-color: #3498db;
+            color: white;
+        }
+
+        .btn-secondary {
+            background-color: #6c757d;
+            color: white;
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .result-card {
+                padding: 15px;
+            }
+            
+            .subject {
+                flex-direction: column;
+                text-align: center;
+            }
+            .profile-photo {
+                width: 100px;
+                height: 100px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="profile-image-container">
+            <img src="profile.jpg" alt="Profile" class="profile-image" />
+          </div>
+
+        <div class="header">
+            <h1>Result Card</h1>
+            <button class="theme-toggle" id="themeToggle">☀️</button>
+        </div>
+        <div class="result-card">
+            <div class="student-info">
+                <div class="info-item"><strong>Name:</strong> <span id="studentName">Jayshree Dey</span></div>
+                <div class="info-item"><strong>Registration No:</strong> <span id="regNo">2206132117</span></div>
+                <div class="info-item"><strong>Roll No:</strong> <span id="rollNo">134</span></div>
+            </div>
+            <div class="subjects" id="subjects">
+                <!-- Subjects will be populated by JavaScript -->
+            </div>
+            <div class="result-summary" id="resultStatus">
+                <!-- Status will be populated by JavaScript -->
+            </div>
+        </div>
+        <div class="buttons">
+            <button class="btn btn-primary" onclick="downloadResult()">Download Result</button>
+            <button class="btn btn-secondary" onclick="goBack()">Back</button>
+        </div>
+    </div>
+
+    <script>
+        // Sample student data
+        const studentData = {
+            name: "Jayshree Dey",
+            regNo: "2206132117",
+            rollNo: "134",
+            subjects: [
+                { name: "Aptitude", marks: 55 },
+                { name: "Python", marks: 78 },
+                { name: "C programing", marks: 82 }
+            ]
+        };
+
+        // Populate student information
+        document.getElementById('studentName').textContent = studentData.name;
+        document.getElementById('regNo').textContent = studentData.regNo;
+        document.getElementById('rollNo').textContent = studentData.rollNo;
+
+        // Populate subjects and calculate percentage
+        const subjectsContainer = document.getElementById('subjects');
+        let totalMarks = 0;
+
+        studentData.subjects.forEach(subject => {
+            const subjectElement = document.createElement('div');
+            subjectElement.className = 'subject';
+            subjectElement.innerHTML = `
+                <span>${subject.name}</span>
+                <span>${subject.marks}/100</span>
+            `;
+            subjectsContainer.appendChild(subjectElement);
+            totalMarks += subject.marks;
+        });
+
+        // Calculate percentage and set status
+        const percentage = totalMarks / (studentData.subjects.length * 100) * 100;
+        const resultStatus = document.getElementById('resultStatus');
+        resultStatus.innerHTML = `
+            <h3>Overall Percentage: ${percentage.toFixed(2)}%</h3>
+            <h2>Status: ${percentage >= 35 ? 'PASS' : 'FAIL'}</h2>
+        `;
+        resultStatus.className = `result-summary ${percentage >= 35 ? 'pass' : 'fail'}`;
+
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('themeToggle');
+        let isDarkMode = false;
+
+        themeToggle.addEventListener('click', () => {
+            isDarkMode = !isDarkMode;
+            document.body.classList.toggle('dark-mode');
+            themeToggle.textContent = isDarkMode ? '🌙' : '☀️';
+        })
+
+        function downloadResult() {
+            alert('Downloading result...');
+            // Add actual download functionality here
+        }
+
+        function goBack() {
+            alert('Going back...');
+            // Add actual navigation functionality here
+        }
+
+        // Calculate result when page loads
+        document.addEventListener('DOMContentLoaded', calculateResult);
+    </script>
+</body>
+</html>

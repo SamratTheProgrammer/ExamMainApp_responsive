@@ -348,11 +348,22 @@ span{
     color: var(--white-color);
     margin : 2.5rem 1.5rem 3rem 0;
     transition: .5s ease;
-    
 }
-.social-media a:hover{
-    background: var(--white-color);
-    color: var(--main-color);
+.social-media .fb:hover{
+    background-color: #1877f2;
+    border: .2rem solid #1877f2;
+}
+.social-media .lkd:hover{
+    background-color: #0077b5;
+    border: .2rem solid #0077b5;
+}
+.social-media .yt:hover{
+    background-color: #ff0000;
+    border: .2rem solid #ff0000;
+}
+.social-media .ig:hover{
+    background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D, #F56040, #F77737, #FCAF45, #FFDC80);
+    border: none;
 }
 .social-media{
     position: relative;
@@ -388,7 +399,6 @@ span{
     font-size: 2.4rem;
     color: #333;
 }
-
 .head{
     color: var(--ftxt-color);
     font-size:2.0rem;
@@ -565,7 +575,6 @@ button#signup:hover{
 }
 .fullCover.cover{
     display: flex;
-    
 }
 .login_mail2{
     height: 4rem;
@@ -948,7 +957,6 @@ button#signup:hover{
         font-size:4.2rem ;
         top: 50%;
         overflow: hidden;
-        pointer-events: none;
     }
     .image{
         height: 40vh;
@@ -1125,12 +1133,6 @@ button#signup:hover{
     .contact form{
         max-width: 80rem;
     }
-    .container{
-        position: absolute;
-        left:35%;
-        height: 50%;
-        width: 42%;
-    }
     .head{
         font-size: 3rem;
         padding-top: 2.6rem;
@@ -1175,11 +1177,6 @@ button#signup:hover{
     .email{
         padding-bottom: 3rem;
     }
-    .close{
-        left: 94.5%;
-        border-top-right-radius: 20px;
-        border-bottom-left-radius: 40px;
-    }
     .container2{
         position: absolute;
         left: 35%;
@@ -1223,7 +1220,6 @@ button#signup:hover{
     .container3{
         position: absolute;
         left: 0%;
-
         width: 60rem;
     }
     .container3 #mail3{
@@ -1420,8 +1416,8 @@ button#signup:hover{
     }
     .container3{
         width: 75rem;
-        height: 45rem;
         left: 4%;
+        gap: 5px;
     }
     .container3 h1{
         font-size: 6rem;
@@ -1581,7 +1577,6 @@ button#signup:hover{
     }
     .contact form{
         width: 70rem;
-        
     }
     
 }
@@ -1613,7 +1608,7 @@ input:-ms-input-placeholder {
             <a href="#test" >Test</a>
             <a href="#about" >About Us</a>
             <a href="#contact" >Contact Us</a>
-            <a href="/ExamMainApp_responsive/registration-form.html" id="sign-up"><span class="btn">Register</span></a>
+            <a href="/registration-form.html" id="sign-up"><span class="btn">Register</span></a>
             <a href="#" class="btn2" id="pop_up">Sign In</a>
         </nav>
         <i class='bx bxs-moon' id="darkMode-icon"></i>
@@ -1816,10 +1811,10 @@ input:-ms-input-placeholder {
                 <p>Copyright &copy; 2024 by ExamNex | All Rights Reserved.</p>
             </div>
             <div class="social-media">
-                <a href="#" target="_blank"><i class='bx bxl-facebook'></i></a>
-                <a href="#" target="_blank"><i class='bx bxl-instagram-alt' ></i></a>
-                <a href="#" target="_blank"><i class='bx bxl-linkedin'></i></a>
-                <a href="#" target="_blank"><i class='bx bxl-youtube' ></i></a>
+                <a href="#" class="fb" target="_blank"><i class='bx bxl-facebook'></i></a>
+                <a href="#" class="ig" target="_blank"><i class='bx bxl-instagram-alt' ></i></a>
+                <a href="#" class="lkd" target="_blank"><i class='bx bxl-linkedin'></i></a>
+                <a href="#" class="yt" target="_blank"><i class='bx bxl-youtube' ></i></a>
             </div>
             <!-- <div class="para">
             <p>Contact Us on social media sites</p></div> -->
