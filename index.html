@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+--text-color: #333;<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -103,7 +103,6 @@ section{
     font-size: 5rem;
     font-weight: 700;
     margin-bottom: .3rem;
-    
 }
 .home-content p{
     font-size: 1.6rem;
@@ -517,23 +516,6 @@ span i{
 button#signup:hover{
     background-color: darkgreen;
 }
-.close{
-    color: var(--ftxt-color);
-    font-size: 3rem;
-    position: absolute;
-    left: 92%;
-    border-top-right-radius: 10px;
-    border-bottom-left-radius: 20px;
-    background-color: var(--ftxt-color);
-    margin-left: 2px;
-}
-.close:hover{
-    background-color: rgb(5, 5, 77);
-    transition: .5s;
-}
-.container.show1{
-    display: flex; 
-}
 .container2{
     position: relative;
     left: 0;
@@ -634,7 +616,7 @@ button#signup:hover{
 }
 .forgot2 a{
     position: relative;
-    left: 37%;
+    left: 27%;
     color: var(--ftxt-color);
 }
 #forget2:hover{
@@ -647,11 +629,16 @@ button#signup:hover{
     color: var(--white-color);
     font-size: 3rem;
     position: absolute;
-    left: 92%;
+    left: 89.5%;
     border-top-right-radius: 10px;
     border-bottom-left-radius: 20px;
     background-color: var(--ftxt-color);
     margin-left: 2px;
+    width: 4rem;
+    height: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .close2:hover{
     background-color: rgb(5, 5, 77);
@@ -735,13 +722,18 @@ button#signup:hover{
 }
 .close3{
     color: var(--white-color);
-    font-size: 2.4rem;
+    font-size: 3rem;
     position: absolute;
-    left: 95%;
+    left: 91.5%;
     border-top-right-radius: 10px;
     border-bottom-left-radius: 20px;
     background-color: var(--ftxt-color);
     margin-left: 2px;
+    width: 4rem;
+    height: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .close3:hover{
     background-color: rgb(5, 5, 77);
@@ -1113,7 +1105,7 @@ button#signup:hover{
     .search-button {
         width: 14%;
         left: 34%;
-        top: 1.5%;
+        top: 0;
         font-size: 1.8rem;
         height: 6.1rem;
     }
@@ -1250,6 +1242,102 @@ button#signup:hover{
     .pad{
         padding-top: 2rem;
     }
+    .container2{
+        height: 80rem;
+        width: 75rem;
+        flex-direction: column;
+        align-items: center;
+        left: 25%;
+        display: flex;
+        pointer-events: all;
+    }
+    .container2 h2{
+        position: relative;
+        top: 0;
+        font-size: 5rem;
+        padding-top: 4rem;
+    }
+    .close2{
+        left: 91.5%;
+        border-top-right-radius: 10px;
+        border-bottom-left-radius: 60px;
+        width: 6rem;
+        height: 6rem;
+        font-size: 6.5rem;
+        padding-bottom:1rem;
+    }
+    .close2 i{
+        padding-left: 1rem;
+    }
+    .log_inp{
+        width: 60rem;
+        height: 8rem;
+    }
+    .elements2{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .icon-mail2,#mail2,#pass2,.lock{
+        font-size: 3rem;
+    }
+    .elements2 span{
+        font-size: 4rem;
+        margin-top: 2rem;
+    }
+    .login_btn2{
+        width: 60rem;;
+        height: 20rem;
+        margin-top: 2rem;
+        display: flex;
+        justify-content: center;
+    }
+    .login_btn2 #log_in2{
+        width: 87rem;
+        height: 10rem;
+        font-size: 3rem;
+    }
+    .forgot2{
+        font-size: 3rem;
+    }
+    .forgot2 label{
+        margin-right: -7rem;
+    }
+    #forgot2{
+        margin-left: -4rem;
+    }
+    .container3{
+        width: 75rem;
+        left: 4%;
+        gap: 7px;
+        left: 25%;
+    }
+    .container3 h1{
+        font-size: 6rem;
+    }
+    .container3 input{
+        padding: 4rem;
+        font-size: 3rem;
+    }
+    .close3{
+        font-size: 5rem;
+        padding-left: 0.5rem;
+        padding-bottom: 0.5rem;
+        left: 91.5%;
+        width: 6rem;
+        height: 6rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-top-right-radius: 10px;
+        border-bottom-left-radius: 60px;
+    }
+    .btn3{
+        width: 28rem;
+        height: 8rem;
+        font-size: 3rem;
+    }
 }
 @media(max-width:798px){
     html{
@@ -1355,6 +1443,7 @@ button#signup:hover{
         flex-direction: column;
         align-items: center;
         left: 5%;
+        pointer-events: all;
     }
     .container2 h2{
         position: relative;
@@ -1364,7 +1453,7 @@ button#signup:hover{
         display: flex;
     }
     .close2{
-        left: 89%;
+        left: 88.8%;
         border-top-right-radius: 10px;
         border-bottom-left-radius: 60px;
         width: 8rem;
@@ -1416,8 +1505,8 @@ button#signup:hover{
     }
     .container3{
         width: 75rem;
-        left: 4%;
-        gap: 5px;
+        left: 4.5%;
+        gap: 7px;
     }
     .container3 h1{
         font-size: 6rem;
@@ -1429,7 +1518,7 @@ button#signup:hover{
     .close3{
         font-size: 5rem;
         padding: 1rem;
-        left: 90.2%;
+        left: 91.5%;
         border-top-right-radius: 10px;
         border-bottom-left-radius: 60px;
     }
@@ -1608,7 +1697,7 @@ input:-ms-input-placeholder {
             <a href="#test" >Test</a>
             <a href="#about" >About Us</a>
             <a href="#contact" >Contact Us</a>
-            <a href="/ExamMainApp_responsive/registration-form.html" id="sign-up"><span class="btn">Register</span></a>
+            <a href="/registration-form.html" id="sign-up"><span class="btn">Register</span></a>
             <a href="#" class="btn2" id="pop_up">Sign In</a>
         </nav>
         <i class='bx bxs-moon' id="darkMode-icon"></i>
@@ -1881,12 +1970,10 @@ input:-ms-input-placeholder {
             bg.classList.remove("cover");
         }
         }
-
         signInBtn3.onclick = function() {
             modal3.classList.add('show2');
             modal1.classList.remove('show');
             bg.classList.add("cover");
-
         }
         closeBtn3.onclick = function() {
             modal3.classList.remove('show2');
